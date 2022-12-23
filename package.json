@@ -1,0 +1,23 @@
+{
+  "name": "group_data_in_intervals",
+  "version": "1.0.0",
+  "description": "This package solves an issue I experienced lately when I want to group a large number of sales records in yearly, monthly, weekly and daily intervals for displaying on charts and graphs.Package considers intervals with no sales. Enjoy every byte!!!",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test",
+    "build": "tsc"
+  },
+  "keywords": [
+    "Javascript",
+    "data",
+    "sales",
+    "grouping",
+    "interval",
+    "timestamp"
+  ],
+  "author": "Chinonso Sunday Dimgba",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
