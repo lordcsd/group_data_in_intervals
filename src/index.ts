@@ -2,9 +2,15 @@ import {
   IntervalEnum,
   SortParamsDTO,
   IntervalDTO,
+  GroupedDataDTO,
 } from "./dto/sales.dto";
 
-export * from "./dto/sales.dto"
+export {
+  IntervalEnum,
+  SortParamsDTO,
+  IntervalDTO,
+  GroupedDataDTO,
+} from "./dto/sales.dto";
 
 export function groupDataInTimeIntervals(
   details: SortParamsDTO
@@ -24,9 +30,7 @@ export function groupDataInTimeIntervals(
   }
 
   const endDate = data.reduce((latest, sale) => {
-    return new Date(sale.t as any) > latest
-      ? new Date(sale.t as any)
-      : latest;
+    return new Date(sale.t as any) > latest ? new Date(sale.t as any) : latest;
   }, new Date(data[0].t as any));
 
   const intervals: IntervalDTO[] = [
@@ -39,10 +43,7 @@ export function groupDataInTimeIntervals(
 
   let currentStartDate = intervals[0].endDate;
   while (currentStartDate < endDate) {
-    const currentEndDate = getEndDate(
-      currentStartDate,
-      interval
-    );
+    const currentEndDate = getEndDate(currentStartDate, interval);
     intervals.push({
       startDate: currentStartDate,
       endDate: currentEndDate,
@@ -54,10 +55,8 @@ export function groupDataInTimeIntervals(
   for (const sale of data) {
     for (const _interval of intervals) {
       if (
-        new Date(sale.t as any) >=
-          _interval.startDate &&
-        new Date(sale.t as any) <
-          _interval.endDate
+        new Date(sale.t as any) >= _interval.startDate &&
+        new Date(sale.t as any) < _interval.endDate
       ) {
         _interval.data.push(sale);
         break;
@@ -68,23 +67,12 @@ export function groupDataInTimeIntervals(
   return intervals;
 }
 
-function getEndDate(
-  startDate: Date,
-  interval: IntervalEnum
-): Date {
+function getEndDate(startDate: Date, interval: IntervalEnum): Date {
   switch (interval) {
     case IntervalEnum.YEARLY:
-      return new Date(
-        startDate.getFullYear() + 1,
-        0,
-        1
-      );
+      return new Date(startDate.getFullYear() + 1, 0, 1);
     case IntervalEnum.MONTHLY:
-      return new Date(
-        startDate.getFullYear(),
-        startDate.getMonth() + 1,
-        1
-      );
+      return new Date(startDate.getFullYear(), startDate.getMonth() + 1, 1);
     case IntervalEnum.WEEKLY:
       return new Date(
         startDate.getFullYear(),
