@@ -4,6 +4,8 @@ import {
   IntervalDTO,
 } from "./dto/sales.dto";
 
+export * from "./dto/sales.dto"
+
 export function groupDataInTimeIntervals(
   details: SortParamsDTO
 ): IntervalDTO[] {
