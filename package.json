@@ -4,7 +4,7 @@
     "type": "git",
     "url": "https://github.com/lordcsd/group_data_in_intervals.git"
   },
-  "version": "1.0.33",
+  "version": "1.0.34",
   "description": "This package solves an issue I experienced lately when I want to group a large number of sales records in yearly, monthly, weekly and daily intervals for displaying on charts and graphs.Package considers intervals with no sales. Enjoy every byte!!!",
   "main": "lib/index.js",
   "scripts": {
