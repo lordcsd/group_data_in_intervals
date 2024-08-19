@@ -18,7 +18,7 @@ export function groupDataInTimeIntervals(
   let endDate = new Date(data[0].t as any);
 
   for (const datum of data) {
-    if (+new Date(datum.t as any) >= +endDate) {
+    if (+new Date(datum.t as any) > +endDate) {
       endDate = new Date(datum.t as any);
     }
 
@@ -39,7 +39,7 @@ export function groupDataInTimeIntervals(
   ];
 
   let currentStartDate = intervals[0].endDate;
-  while (currentStartDate < endDate) {
+  while (currentStartDate <= endDate) {
     const currentEndDate = getIntervalEndDate(currentStartDate, interval);
     intervals.push({
       startDate: currentStartDate,
@@ -53,7 +53,7 @@ export function groupDataInTimeIntervals(
     for (const _interval of intervals) {
       if (
         new Date(sale.t as any) >= _interval.startDate &&
-        new Date(sale.t as any) <= _interval.endDate
+        new Date(sale.t as any) < _interval.endDate
       ) {
         _interval.data.push(sale);
         break;
