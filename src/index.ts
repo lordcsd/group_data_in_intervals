@@ -18,7 +18,7 @@ export function groupDataInTimeIntervals(
   let endDate = new Date(data[0].t as any);
 
   for (const datum of data) {
-    if (+new Date(datum.t as any) > +endDate) {
+    if (+new Date(datum.t as any) >= +endDate) {
       endDate = new Date(datum.t as any);
     }
 
