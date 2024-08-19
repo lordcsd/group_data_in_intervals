@@ -22,6 +22,6 @@
   "author": "Chinonso Sunday Dimgba",
   "license": "ISC",
   "devDependencies": {
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.5"
   }
 }
