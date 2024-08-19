@@ -1,9 +1,4 @@
-import {
-  IntervalEnum,
-  SortParamsDTO,
-  IntervalDTO,
-  GroupedDataDTO,
-} from "./dto/sales.dto";
+import { IntervalEnum, SortParamsDTO, IntervalDTO } from "./dto/sales.dto";
 
 export {
   IntervalEnum,
@@ -58,7 +53,7 @@ export function groupDataInTimeIntervals(
     for (const _interval of intervals) {
       if (
         new Date(sale.t as any) >= _interval.startDate &&
-        new Date(sale.t as any) < _interval.endDate
+        new Date(sale.t as any) <= _interval.endDate
       ) {
         _interval.data.push(sale);
         break;
